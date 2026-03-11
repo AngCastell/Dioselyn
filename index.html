@@ -47,14 +47,20 @@
 
     #envelope-screen {
       position: fixed; inset: 0; z-index: 999;
-      background: var(--fondo);
+      min-height: 100vh;
+      min-height: 100dvh;
+      min-width: 100vw;
+      background-color: #fff;
       background-image: url('arreglo.jpeg');
-      background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
+      background-position: center center;
       display: flex; align-items: center; justify-content: center;
       flex-direction: column;
       cursor: pointer;
+    }
+    #envelope-screen {
+      background-size: contain;
+      background-position: center center;
     }
     #envelope-screen.hide { 
       opacity: 0; 
