@@ -390,6 +390,32 @@
     main { position: relative; z-index: 1; opacity: 0; transition: opacity 1s ease; }
     main.visible { opacity: 1; }
 
+    /* Botón silenciar música */
+    .music-mute-btn {
+      position: fixed;
+      bottom: 1.25rem;
+      right: 1.25rem;
+      z-index: 100;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(212,180,131,0.6);
+      background: rgba(250,247,242,0.95);
+      color: var(--gold);
+      font-size: 1.4rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 12px rgba(44,36,22,0.12);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .music-mute-btn:hover {
+      background: rgba(212,180,131,0.25);
+      transform: scale(1.05);
+    }
+    .music-mute-btn.muted { opacity: 0.85; }
+
     /* ── ESTRELLAS FUGACES ── */
     .estrellas-fugaces {
       position: fixed;
@@ -748,6 +774,48 @@
     .tl-content a:hover {
       border-color: var(--gold);
       color: var(--gold-light);
+    }
+
+    /* LLUVIA DE SOBRES — mismo tamaño que dress-card (código de vestimenta) */
+    .lluvia-sobres-section {
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+    .lluvia-sobres-section .lluvia-sobres-card {
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      min-width: 200px;
+      background: linear-gradient(145deg, rgba(250,247,242,0.98) 0%, rgba(240,235,225,0.95) 100%);
+      border: 1px solid rgba(212,180,131,0.4);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(44,36,22,0.06), 0 0 0 1px rgba(184,151,90,0.08) inset;
+      text-align: center;
+    }
+    .lluvia-sobres-section .lluvia-sobres-logo {
+      width: 100%;
+      max-width: 120px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .lluvia-sobres-section .lluvia-sobres-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2rem);
+      font-weight: 400;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+    }
+    .lluvia-sobres-section .lluvia-sobres-card p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      font-weight: 300;
     }
 
     /* DRESS CODE */
@@ -1241,6 +1309,9 @@
     </div>
   </div>
 </div>
+<audio id="bg-music" loop preload="auto">
+  <source src="Pieces Hushed.mp4" type="audio/mp4">
+</audio>
 <script>
 (function() {
   var el = document.getElementById('envelope-screen');
@@ -1256,6 +1327,8 @@
       m.classList.add('visible');
       var fadeEls = document.querySelectorAll('.fade-in');
       for (var i = 0; i < fadeEls.length; i++) fadeEls[i].classList.add('visible');
+      var bg = document.getElementById('bg-music');
+      if (bg) { bg.volume = 0.5; bg.play().catch(function() {}); }
       if (window.initObserver) window.initObserver();
       if (window.startCountdown) window.startCountdown();
       else iniciarCuentaRegresiva();
@@ -1298,6 +1371,8 @@
 
 <!-- ── MAIN ── -->
 <main id="main">
+
+  <button type="button" id="btn-mute-music" class="music-mute-btn" aria-label="Silenciar música" title="Silenciar música">🔊</button>
 
   <div class="estrellas-fugaces" aria-hidden="true">
     <span class="estrella-fugaz"></span>
@@ -1392,10 +1467,19 @@
     </div>
   </section>
 
+  <!-- LLUVIA DE SOBRES -->
+  <section class="fade-in lluvia-sobres-section">
+    <div class="lluvia-sobres-card">
+      <img src="sobre.png" alt="Lluvia de sobres" class="lluvia-sobres-logo">
+      <h2>Lluvia de sobres</h2>
+      <p>Si desean acompañarnos también con un detalle, una lluvia de sobres será recibida con profundo cariño y nos ayudará a seguir construyendo el lugar donde crecerá nuestra vida juntos.</p>
+    </div>
+  </section>
+
   <!-- GALERÍA -->
   <section class="fade-in">
     <h2>Momentos</h2>
-    <p style="margin-top: 1rem; margin-bottom: 1.5rem;">Comenzamos esta nueva etapa con amor, fe y la ilusión de formar nuestro hogar. Su presencia en este día tan importante es el mayor regalo que podemos recibir. Si desean acompañarnos también con un detalle, una lluvia de sobres será recibida con profundo cariño y nos ayudará a seguir construyendo el lugar donde crecerá nuestra vida juntos.</p>
+    <p style="margin-top: 1rem; margin-bottom: 1.5rem;">Comenzamos esta nueva etapa con amor, fe y la ilusión de formar nuestro hogar. Su presencia en este día tan importante es el mayor regalo que podemos recibir.</p>
     <div class="carousel-container">
       <div class="carousel-wrapper">
         <div class="carousel" id="carousel">
@@ -1566,6 +1650,8 @@
       main.classList.add('visible');
       var fadeEls = document.querySelectorAll('.fade-in');
       for (var i = 0; i < fadeEls.length; i++) fadeEls[i].classList.add('visible');
+      var bg = document.getElementById('bg-music');
+      if (bg) { bg.volume = 0.5; bg.play().catch(function() {}); }
       if (typeof initObserver === 'function') initObserver();
       if (typeof startCountdown === 'function') startCountdown();
       if (typeof ensureHeroVideoPlays === 'function') ensureHeroVideoPlays();
@@ -1588,6 +1674,17 @@
       }
       envelopeScreen.addEventListener('click', abrirAlTocar);
       envelopeScreen.addEventListener('touchstart', abrirAlTocar, { passive: false });
+    }
+    var btnMute = document.getElementById('btn-mute-music');
+    var bgMusic = document.getElementById('bg-music');
+    if (btnMute && bgMusic) {
+      btnMute.addEventListener('click', function() {
+        bgMusic.muted = !bgMusic.muted;
+        btnMute.textContent = bgMusic.muted ? '🔇' : '🔊';
+        btnMute.classList.toggle('muted', bgMusic.muted);
+        btnMute.setAttribute('aria-label', bgMusic.muted ? 'Activar música' : 'Silenciar música');
+        btnMute.setAttribute('title', bgMusic.muted ? 'Activar música' : 'Silenciar música');
+      });
     }
     ensureHeroVideoPlays();
     var once = true;
