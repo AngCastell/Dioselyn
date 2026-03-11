@@ -17,14 +17,14 @@
       --dark: #2c2416;
       --text: #4a3f2f;
       --muted: #8a7a63;
-      /* Colores del sobre original */
+      /* Colores del sobre (beige) */
       --primario: #fff;
       --fondo: #ffffff; 
-      --fondo-sobre: #8B1538; 
-      --solapa-sobre: #722F37; 
-      --cuerpo-sobre: #6B1F2A; 
+      --fondo-sobre: #e5dcc8; 
+      --solapa-sobre: #d9cfb8; 
+      --cuerpo-sobre: #cdc0a8; 
       --sombra: rgba(0, 0, 0, 0.2);
-      --texto-sobre: #003049; 
+      --texto-sobre: #4a3f2f; 
       --corazon: #ff477e; 
     }
 
@@ -48,7 +48,7 @@
     #envelope-screen {
       position: fixed; inset: 0; z-index: 999;
       background: var(--fondo);
-      background-image: url('oficial.png');
+      background-image: url('arreglo.jpeg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -1495,42 +1495,15 @@
     </div>
   </section>
 
-  <!-- RSVP - Confirmación de asistencia (integrado desde preinvitacion) -->
+  <!-- RSVP - Solo banner y botones (sin registro de asistencia) -->
   <div class="rsvp-section fade-in">
     <div style="max-width:720px;margin:0 auto;text-align:center">
-      <h2>Confirma tu Asistencia</h2>
-      <p>Nos encantaría compartir este momento contigo.</p>
-      <p class="confirmation-message">Por favor confírmanos si podremos contar con tu presencia.</p>
-      <div class="form-section">
-        <form id="confirmationForm" class="rsvp-form">
-          <div class="form-group">
-            <label for="guestName">Nombre completo *</label>
-            <input type="text" id="guestName" name="guestName" required placeholder="Ingresa tu nombre completo">
-          </div>
-          <div class="form-group">
-            <label>¿Confirmas tu asistencia? *</label>
-            <div class="radio-group">
-              <label class="radio-option">
-                <input type="radio" name="attendance" value="yes" required>
-                <span>✓ Sí, asistiré con mucho gusto</span>
-              </label>
-              <label class="radio-option">
-                <input type="radio" name="attendance" value="no" required>
-                <span>✗ Lo siento, no podré asistir</span>
-              </label>
-            </div>
-          </div>
-          <button type="submit" class="submit-btn">Confirmar Asistencia</button>
-        </form>
-        <!-- Anuncio informativo -->
-        <div class="info-announcement">
-          <p>💡 Si ya confirmaste tu asistencia, puedes consultar los pases, modificar los pases, y cancelar tu asistencia buscando tu nombre tal cual a como te registraste, usando los botones a continuación.</p>
-        </div>
-        <button type="button" class="check-passes-btn" id="checkPassesBtn">Consultar Pases</button>
-        <button type="button" class="modify-companions-btn" id="modifyCompanionsBtn">Modificar Acompañantes</button>
-        <button type="button" class="cancel-attendance-btn" id="cancelAttendanceBtn">Cancelar asistencia</button>
+      <div class="info-announcement">
+        <p>💡 Si ya confirmaste tu asistencia, puedes consultar los pases, modificar los pases, y cancelar tu asistencia buscando tu nombre tal cual a como te registraste, usando los botones a continuación.</p>
       </div>
-      <p id="rsvp-msg" class="success-message" style="margin-top:1.5rem;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:1.2rem;display:none">¡Gracias! Tu confirmación fue registrada 🤍</p>
+      <button type="button" class="check-passes-btn" id="checkPassesBtn">Consultar Pases</button>
+      <button type="button" class="modify-companions-btn" id="modifyCompanionsBtn">Modificar Acompañantes</button>
+      <button type="button" class="cancel-attendance-btn" id="cancelAttendanceBtn">Cancelar asistencia</button>
     </div>
   </div>
 
