@@ -830,19 +830,117 @@
       font-weight: 300;
     }
 
-    /* DRESS CODE */
+    /* DRESS CODE — responsive escritorio y móvil */
+    .dress-card-wrap { text-align: center; margin-top: 3rem; padding: 0 1rem; }
     .dress-card {
-      background: var(--dark); color: var(--cream);
-      padding: 3rem 2rem; margin-top: 2rem;
-      display: inline-flex; flex-direction: column; align-items: center; gap: 1rem;
+      padding: 1.5rem 2rem;
+      margin-top: 0;
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      width: 100%;
+      max-width: min(520px, 92vw);
       min-width: 200px;
+      box-sizing: border-box;
+      background: linear-gradient(145deg, rgba(250,247,242,0.98) 0%, rgba(240,235,225,0.95) 100%);
+      border: 1px solid rgba(212,180,131,0.4);
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(44,36,22,0.06), 0 0 0 1px rgba(184,151,90,0.08) inset;
+      text-align: center;
     }
-    .dress-icon { font-size: 3rem; }
+    .dress-card .dress-logo {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      margin: 0 auto 0.15rem;
+      display: block;
+      object-fit: contain;
+    }
+    .dress-card h2,
+    .dress-card h3 {
+      margin-top: 0;
+    }
     .dress-card h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem; font-weight: 300; color: var(--gold-light);
+      font-size: clamp(1.3rem, 3.2vw, 1.5rem);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.1rem;
     }
-    .dress-card p { font-size: .8rem; color: rgba(250,247,242,.5); }
+    .dress-card .dress-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .dress-card .dress-intro {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text);
+      text-align: center;
+      margin: 0 0 0.6rem;
+      max-width: 100%;
+    }
+    .dress-card .dress-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      text-align: left;
+      margin-top: 0.5rem;
+    }
+    .dress-card .dress-block {
+      padding: 0.35rem 0;
+      border-top: 1px solid rgba(212,180,131,0.3);
+      text-align: center;
+    }
+    .dress-card .dress-block .dress-block-icon,
+    .dress-card .dress-block span.dress-block-icon {
+      display: block;
+      width: fit-content;
+      font-size: 4rem !important;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .dress-card .dress-block strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+    .dress-card .dress-block span {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .dress-card p.dress-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+    @media (max-width: 767px) {
+      .dress-card-wrap { padding: 0 0.75rem; }
+      .dress-card {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.25rem 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      .dress-card .dress-block .dress-block-icon,
+      .dress-card .dress-block span.dress-block-icon {
+        font-size: 3.25rem !important;
+      }
+      .dress-card .dress-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
 
     /* CAROUSEL */
     .carousel-container {
@@ -1472,10 +1570,24 @@
       </div>
     </div>
 
-    <div class="dress-card fade-in" style="margin-top: 2.5rem;">
-      <span class="dress-icon">👗</span>
-      <h3>Código de vestimenta</h3>
-      <p>Con el deseo de conservar la estética de este día tan especial, agradecemos amablemente evitar los tonos blanco, crema, champagne, rojo, azul y negro.</p>
+    <div class="dress-card-wrap">
+    <div class="dress-card fade-in">
+      <h2>Código de Vestimenta</h2>
+      <p class="dress-subtitle">Formal</p>
+      <p class="dress-intro">Queremos que cada uno de ustedes se sienta especial y luzca espectacular en nuestro día. Por ello, hemos elegido un código de vestimenta formal para que juntos creemos una atmósfera elegante y armoniosa en esta celebración tan importante para nosotros. Agradecemos de corazón su apoyo respetando las siguientes indicaciones.</p>
+      <div class="dress-grid">
+        <div class="dress-block">
+          <span class="dress-block-icon" aria-hidden="true">🤵</span>
+          <strong>Caballeros</strong>
+          <span>Evitar el color azul navy.</span>
+        </div>
+        <div class="dress-block">
+          <span class="dress-block-icon" aria-hidden="true">👗</span>
+          <strong>Damas</strong>
+          <span>Evitar los colores blanco, crema, nude, beige.</span>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -1483,7 +1595,7 @@
   <section class="fade-in lluvia-sobres-section">
     <div class="lluvia-sobres-card">
       <img src="sobre.png" alt="Lluvia de sobres" class="lluvia-sobres-logo">
-      <h2>Lluvia de sobres</h2>
+      <h2>Lluvia de Sobres</h2>
       <p>Si desean acompañarnos también con un detalle, una lluvia de sobres será recibida con profundo cariño y nos ayudará a seguir construyendo el lugar donde crecerá nuestra vida juntos.</p>
     </div>
   </section>
